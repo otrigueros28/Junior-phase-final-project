@@ -1,0 +1,47 @@
+{
+  "name": "jrphase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "db.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.19.2",
+    "webpack-cli": "^3.3.9",
+    "webpack": "^4.41.0",
+    "start:dev": "npm run webpack & nodemon server.js --ignore dist/ --ignore src/"
+  },
+  "babel": {
+    "presets": [
+      "@babel/react"
+    ]
+  },
+  "postinstall": "webpack",
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "axios": "^0.19.0",
+    "babel-loader": "^8.0.6",
+    "moment": "^2.24.0",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "webpack": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otrigueros28/Junior-phase-final-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/otrigueros28/Junior-phase-final-project/issues"
+  },
+  "homepage": "https://github.com/otrigueros28/Junior-phase-final-project#readme"
+}

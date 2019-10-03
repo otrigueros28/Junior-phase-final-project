@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
-const { syncAndSeed, models,  } = require('./db');
+const { syncAndSeed, models } = require('./db');
 const { School, Student } = models
 const path = require('path')
 const port =  process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.get('/api/schools',  (req, res, next) => {
+app.use('/dist', express.static(path.join(__dirname, 'dist')));
+
+app.get('/api/schools', (req, res, next) => {
    School.findAll()
     .then(student => res.json(student))
     .catch(next);
