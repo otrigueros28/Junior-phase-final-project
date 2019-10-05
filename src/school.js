@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import Students from './Students';
 
 const _School = ({school, theirStudents }) => {
-
   return (
     <div>
       <h3>{school.name} ({theirStudents.length} Students Enrolled)</h3>
       <select name = 'student'>
-        <option disabled selected value> Add a Student</option>
+        <option disabled selected value> --Add a Student--</option>
         {students.map(s => (<option key={s.id} value= {s.id}>{s.name}</option>))}
       </select>
         <ul>

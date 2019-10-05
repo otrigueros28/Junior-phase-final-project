@@ -1,5 +1,6 @@
 import React from 'react';
-import {connect} from 'redux';
+import {connect} from 'react-redux';
+import {destroyStudent} from '../store.js'
 
 const _students = ({schools, students}) => {
   return (
@@ -7,13 +8,13 @@ const _students = ({schools, students}) => {
     {
       students.map(student =>
       <li key = {student.id}>
-        {student.name}
+        {student.firstName} {student.lastName}
         GPA: {student.gpa}
         <select name = 'schools'>
-          <option disabled selected value> Not Enrolled</option>
+          <option defaultValue= {student.schoolId}> --Not Enrolled--</option>
           {schools.map(s => (<option key={s.id} value= {s.id}>{s.name}</option>))}
         </select>
-        <button onClick = {() => destroy(student.id)}>Destroy</button>
+        <button onClick = {() => destroyStudent(student.id)}>Destroy</button>
       </li> )
     }
     </ul>

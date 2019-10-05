@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createStudent } from './store';
+import { createStudent } from '../store';
 
 const _create = ({schools, newstudent}) =>{
   return (
@@ -19,6 +19,7 @@ const _create = ({schools, newstudent}) =>{
       </label>
       <label>
         Enrolled at: <select name = 'school'>
+        <option defaultValue> --Pick a School--</option>
           {schools.map(s => (<option key={s.id} value= {s.id}>{s.name}</option>))}
         </select>
       </label>
