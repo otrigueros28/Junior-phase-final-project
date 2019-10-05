@@ -6,6 +6,7 @@ const Nav = ({schools, students}) =>{
   return (
     <div>
     <nav>
+      ACME Schools
       <Link to = '/'>Home</Link>
       <Link to ='/schools'> Schools()</Link>
       <Link to = '/students'> Students()</Link>

@@ -4,6 +4,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import { Provider, connect} from "react-redux";
 import store, { setStudents, setSchools } from '../store';
 import Nav from './Nav';
+import Home from './Home'
 import Students from './Students';
 import Schools from './Schools';
 import School from './School';
@@ -16,7 +17,8 @@ class _App extends React.Component {
     return (
 
       <HashRouter>
-          <Route path='/' component={ Nav } />
+          <Route component={ Nav } />
+          <Route path='/' component={ Home } exact />
           <Route path='/students' component={ Students } />
           <Route path='/schools' exact component={ Schools } />
           <Route path='/schools/:id' component={ School } />
