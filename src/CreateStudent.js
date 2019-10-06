@@ -15,7 +15,7 @@ const _create = ({schools, newstudent}) =>{
         Email: <input type = "text" name = "email" required></input>
       </label>
       <label>
-        GPA: <input type='number' name = 'gpa' required></input>
+        GPA: <input type='decimal' name = 'gpa' required></input>
       </label>
       <label>
         Enrolled at: <select name = 'school'>
@@ -30,7 +30,7 @@ const _create = ({schools, newstudent}) =>{
 
 const mdp = (dispatch) =>{
   return{
-    newstudent: (ev) => {
+    student: (ev) => {
       const student = {
         firstName: ev.target.firstName.value,
         lastName:ev.target.lastName.value,

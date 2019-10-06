@@ -11,7 +11,7 @@ import School from './School';
 
 class _App extends React.Component {
   componentDidMount(){
-    console.log(this.props.fetchData())
+    this.props.fetchData()
   }
   render (){
     return (
@@ -23,7 +23,6 @@ class _App extends React.Component {
           <Route path='/schools' exact component={ Schools } />
           <Route path='/schools/:id' component={ School } />
       </HashRouter>
-
     )
   }
 }

@@ -6,20 +6,45 @@ const path = require('path')
 const port =  process.env.PORT || 3000;
 
 app.use(express.json());
-
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
+syncAndSeed();
+
+app.get('/', (req, res, next)=>{
+  res.sendFile(path.join(__dirname, 'index.html'))
+});
 
 app.get('/api/schools', (req, res, next) => {
-   School.findAll()
+  School.findAll()
     .then(student => res.json(student))
     .catch(next);
 });
-
 
 app.get('/api/students', (req, res, next) =>{
   Student.findAll()
     .then(student => res.json(student))
     .catch(next);
 })
+
+app.post('/api/students', (req, res, next) =>{
+  Student.create(req.body)
+    .then(student => res.sendStatus(student))
+    .catch(next)
+})
+
+app.put('/api/students/:id', (req, res, next) =>{
+  Students.update({where: {id: req.params.id}})
+    .then( student => res.send(student))
+    .catch(next)
+})
+
+
+app.delete('/api/students/:id', (req, res, next) =>{
+  Students.findByPK(req.params.id)
+    .then(s =>s.destroy())
+    .then(()=> res.sendStatus(204))
+    .catch(next);
+})
+
+
 
 app.listen(port, () => console.log(`listening on port ${port}`));

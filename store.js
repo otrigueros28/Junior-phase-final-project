@@ -1,4 +1,6 @@
-const {combineReducers, createStore, applyMiddleware} = redux;
+import {combineReducers, createStore, applyMiddleware} from 'redux';
+import axios from 'axios';
+import thunk from 'redux-thunk';
 
 const SET_STUDENTS = 'SET_STUDENTS';
 const SET_SCHOOLS = "SET_SCHOOLS";
@@ -54,7 +56,7 @@ const setSchools = () => {
 
 const destroyStudent = (id) => {
   return async (dispatch) => {
-    await axios.delete(`api/student/${id}`);
+    await axios.delete(`api/students/${id}`);
     return dispatch(destroyingStudent(id))
   }
 };
@@ -77,4 +79,4 @@ const updateStudent = (id, schoolId)=> {
 const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;
-export {setStudents, setStudents, createStudent, destroyStudent, updateStudent};
+export {setStudents, setSchools, createStudent, destroyStudent, updateStudent};

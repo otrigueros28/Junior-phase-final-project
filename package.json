@@ -6,10 +6,11 @@
   "dependencies": {
     "express": "^4.17.1",
     "pg": "^7.12.1",
+    "redux-thunk": "^2.3.0",
     "sequelize": "^5.19.2",
-    "webpack-cli": "^3.3.9",
+    "start:dev": "npm run webpack & nodemon server.js --ignore dist/ --ignore src/",
     "webpack": "^4.41.0",
-    "start:dev": "npm run webpack & nodemon server.js --ignore dist/ --ignore src/"
+    "webpack-cli": "^3.3.9"
   },
   "babel": {
     "presets": [
@@ -31,7 +32,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "nodemon server.js & npm run webpack",
     "webpack": "webpack --watch --mode=development"
   },
   "repository": {
