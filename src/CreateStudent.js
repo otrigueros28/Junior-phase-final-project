@@ -23,7 +23,7 @@ const _create = ({schools, newstudent}) =>{
           {schools.map(s => (<option key={s.id} value= {s.id}>{s.name}</option>))}
         </select>
       </label>
-      <input type="submit" value="Save" />
+      <button type="submit"> Save</button>
     </form>
   )
 }
@@ -36,7 +36,7 @@ const mdp = (dispatch) =>{
         lastName:ev.target.lastName.value,
         email: ev.target.email.value,
         gpa: ev.target.gpa.value,
-      schoolId: ev.target.school.value
+      schoolId: ev.target.school.id.value
       }
     ev.preventDefault();
     dispatch(createStudent(student));

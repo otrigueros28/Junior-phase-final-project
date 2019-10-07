@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import {destroyStudent, updateStudent} from '../store.js'
 
 
-const _School = ({school, students, theirStudents, schools}) => {
+const _School = ({school, students, theirStudents, schools, destroyStudent}) => {
   return (
   <div>
       <h3> { school[0].name } ({theirStudents.length} Students Enrolled)</h3>
-      <select name = 'student'onChange = {()=> updateStudent(student)} >
+      <select name = 'student'onChange = {updateStudent} >
         <option defaultValue> --Add a Student--</option>
           {students.map(s => <option key={s.id} value= {s.id}>{s.firstName} {s.lastName}</option>)}
         </select>
@@ -17,11 +17,11 @@ const _School = ({school, students, theirStudents, schools}) => {
               <li key = {student.id}>
               {student.firstName} {student.lastName} <p />
               GPA: {student.gpa}
-              <select name = 'schools'>
+              <select name = 'schools' onChange = {updateStudent} value ={student.schoolID}>
                 <option defaultValue = "not enrolled"> --Not Enrolled--</option>
                 {schools.map(s => (<option key={s.id} defaultValue= {s.id} selected = {s.id === student.schoolId ? true : false}>{s.name}</option>))}
               </select>
-              <button>Destroy</button>
+              <button onClick ={destroyStudent}>Destroy</button>
             </li> )})}
           </ul>
           </div>
@@ -41,3 +41,7 @@ const mdp = ({ schools, students }, { match }) => {
 
 const School = connect(mdp)(_School);
 export default School;
+
+
+
+//{schools.filter(s => s.id === student.schoolID).imageURL ? <img src = {imageURl} /> : null }

@@ -63,7 +63,7 @@ const destroyStudent = (id) => {
 
 const createStudent = ()=> {
   return async (dispatch) => {
-    const newstudent = (await axios.post('api/students', student));
+    const newstudent = await axios.post('api/students', student);
     return dispatch(createingStudent(newstudent))
   }
 };

@@ -15,7 +15,6 @@ class _App extends React.Component {
   }
   render (){
     return (
-
       <HashRouter>
           <Route component={ Nav } />
           <Route path='/' component={ Home } exact />
