@@ -48,7 +48,7 @@ const _Nav = ({schools, students}) =>{
 
 ////////////////////////stuck on topgpa
 
-/* find students who attend and place, of those who attend, find average, sort for highest => place into object with school as key, avg as value, then find max in object */
+/* find students who attend, of those who attend, find average, sort for highest => place into object with school as key, avg as value, then find max in object */
 
 // const topgpa = (schools, students) => {
 //   const gpas = {};
