@@ -71,7 +71,7 @@ const syncAndSeed = async() =>{
     }),
 ]);
   await Student.create ({
-    firstName: 'Emma', lastName: 'G', email: 'emmag@gmail.com', gpa: 4.1, schoolId: cp.id
+    firstName: 'Emma', lastName: 'G', email: 'emmag@gmail.com', gpa: 4.1, schoolId: cal.id
   });
   await Student.create ({
     firstName: 'Barry', lastName: 'Allen', email: 'flash@gmail.com', gpa: 4.0, schoolId: cal.id

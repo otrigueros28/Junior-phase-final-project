@@ -21,22 +21,26 @@ app.get('/api/schools', (req, res, next) => {
 
 app.get('/api/students', (req, res, next) =>{
   Student.findAll()
-    .then(student => res.json(student))
+    .then(student => res.send(student))
     .catch(next);
 })
 
 
 
 app.put('/api/students/:id', async (req, res, next) =>{
-  Students.update({where: {id: req.params.id}})
-    .then( student => res.json(student))
-    .catch(next)
+  try {
+    await Students.update({where: {id: req.params.id}});
+    res.send(student);
+  }
+  catch(ex){
+    next(ex)
+  }
 })
 
 
 app.post('/api/students', async(req, res, next)=> {
   try {
-    res.send(await Student.create(req.body));
+    res.status(201).send(await Student.create(req.body));
   }
   catch(ex){
     next(ex);
@@ -45,7 +49,7 @@ app.post('/api/students', async(req, res, next)=> {
 
 app.delete('/api/students/:id', async(req, res, next)=> {
   try {
-    await Student.destroy(req.params.id);
+    await Student.destroy({where: {id: req.params.id}});
     res.sendStatus(204);
   }
   catch(ex){

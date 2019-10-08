@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {destroyStudent, updateStudent} from '../store.js'
 
 
-const _School = ({school, students, theirStudents, schools, destroyStudent}) => {
+const _School = ({school, students, theirStudents, schools, destroyStudent, updateStudent}) => {
   return (
   <div>
       <h3> { school[0].name } ({theirStudents.length} Students Enrolled)</h3>
@@ -28,7 +28,7 @@ const _School = ({school, students, theirStudents, schools, destroyStudent}) => 
     )};
 
 
-const mdp = ({ schools, students }, { match }) => {
+const msp = ({ schools, students }, { match }) => {
   const school = schools.filter(school => school.id === match.params.id);
   const theirStudents = students.filter(student => student.schoolId === match.params.id);
   return {
@@ -39,7 +39,14 @@ const mdp = ({ schools, students }, { match }) => {
   }
 }
 
-const School = connect(mdp)(_School);
+const mdp = (dispatch) => {
+  return {
+    updateStudent: (student)=> dispatch(updateStudent(student)),
+    destroyStudent: (id) => dispatch(destroyStudent(id))
+  }
+}
+
+const School = connect(msp, mdp)(_School);
 export default School;
 
 

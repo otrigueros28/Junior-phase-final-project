@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStudent } from '../store';
 
-const _create = ({schools, newstudent}) =>{
+const _Create = ({schools, newstudent}) =>{
   return (
     <form id = 'createS' onSubmit = {newstudent}>
       <label>
@@ -39,10 +39,10 @@ const mdp = (dispatch) =>{
       schoolId: ev.target.school.id.value
       }
     ev.preventDefault();
-    dispatch(createStudent(student));
-    }
+    },
+    createStudent: (student) => dispatch(createStudent(student))
   }
 };
 
-const CreateStudent = connect((state) => state, mdp)(_create)
+const CreateStudent = connect((state) => state, mdp)(_Create)
 export default CreateStudent

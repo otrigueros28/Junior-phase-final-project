@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {updateStudent, destroyStudent} from '../store.js'
 
 
-const _schools = ({schools, students, updateStudent}) => {
+const _Schools = ({schools, students, updateStudent}) => {
 
   return (
     <ul>
@@ -28,7 +28,7 @@ const _schools = ({schools, students, updateStudent}) => {
 
 const Schools = connect(({schools, students}) => {return {schools, students}}, (dispatch)=> {
   return {
-    update: dispatch(updateStudent()),
+    updateStudent: (student)=> dispatch(updateStudent(student)),
   }
-})(_schools);
+})(_Schools);
 export default Schools;

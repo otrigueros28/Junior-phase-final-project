@@ -24,7 +24,8 @@ const _students = ({schools, students, updateStudent, destroyStudent}) => {
 
 const mdp = (dispatch) => {
   return {
-   update: dispatch(updateStudent()),
+   updateStudent: (student)=> dispatch(updateStudent(student)),
+   destroyStudent: (id) => dispatch(destroyStudent(id))
 }}
 
 const Students = connect((state)=> state, mdp)(_students);
