@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {destroyStudent, updateStudent} from '../store.js'
+import {destroyStudent, updateStudent} from './store.js'
 
 
 const _School = ({school, students, theirStudents, schools, destroyStudent, updateStudent}) => {

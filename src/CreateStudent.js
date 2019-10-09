@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createStudent } from '../store';
+import { createStudent } from './store';
 
 const _Create = ({schools, createStudent}, props) =>{
   return (
@@ -29,13 +29,18 @@ const _Create = ({schools, createStudent}, props) =>{
 }
 
 const mdp = (dispatch) =>{
-  return{
-    student: (ev) => {
-      const student = ev.target;
-      ev.preventDefault();
-      dispatch(createStudent(student));
-    }
-  }
+  return {
+    createStudent: (ev)=> {
+     const student = {
+        firstName: ev.target.firstName.value,
+        lastName: ev.target.lastName.value,
+        email: ev.target.email.value,
+        gpa: ev.target.gpa.value,
+        schoolId: ev.target.school.id.value
+      }
+    ev.preventDefault();
+    dispatch(createStudent(student));
+}}
 };
 
 const CreateStudent = connect((state) => {return {students: state.students, schools: state.schools}}, mdp)(_Create)

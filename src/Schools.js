@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
-import {updateStudent} from '../store.js'
+import {updateStudent} from './store.js'
 
 
 const _Schools = ({schools, students, updateStudent}) => {
