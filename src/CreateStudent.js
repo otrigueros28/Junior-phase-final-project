@@ -31,16 +31,10 @@ const _Create = ({schools, newstudent}) =>{
 const mdp = (dispatch) =>{
   return{
     student: (ev) => {
-      const student = {
-        firstName: ev.target.firstName.value,
-        lastName:ev.target.lastName.value,
-        email: ev.target.email.value,
-        gpa: ev.target.gpa.value,
-      schoolId: ev.target.school.id.value
-      }
-    ev.preventDefault();
-    },
-    createStudent: (student) => dispatch(createStudent(student))
+      const student = req.body;
+      ev.preventDefault();
+      dispatch(createStudent(student));
+    }
   }
 };
 

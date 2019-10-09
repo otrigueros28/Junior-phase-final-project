@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
-import {updateStudent, destroyStudent} from '../store.js'
+import {updateStudent} from '../store.js'
 
 
 const _Schools = ({schools, students, updateStudent}) => {
@@ -16,7 +16,7 @@ const _Schools = ({schools, students, updateStudent}) => {
       </Link>
         <img src = {school.imageURL} />
         Student count: {students.filter(stu => stu.schoolId === school.id).length}
-        <select name = 'student'onChange = {updateStudent} >
+        <select name = 'student'onChange = {(ev)=> updateStudent(ev.target.id.value)} >
         <option defaultValue> --Add a Student--</option>
           {students.map(s => <option key={s.id} value= {s.id}>{s.firstName} {s.lastName}</option>)}
         </select>
@@ -26,7 +26,7 @@ const _Schools = ({schools, students, updateStudent}) => {
   );
 };
 
-const Schools = connect(({schools, students}) => {return {schools, students}}, (dispatch)=> {
+const Schools = connect(({schools, students}) =>  ({schools, students}), (dispatch)=> {
   return {
     updateStudent: (student)=> dispatch(updateStudent(student)),
   }

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {destroyStudent, updateStudent} from '../store.js'
 
 
-const _students = ({schools, students, updateStudent, destroyStudent}) => {
+const _Students = ({schools, students, updateStudent, destroyStudent}) => {
   return (
     <ul>
     {
@@ -15,7 +15,7 @@ const _students = ({schools, students, updateStudent, destroyStudent}) => {
           <option defaultValue = "not enrolled"> --Not Enrolled--</option>
           {schools.map(s => (<option key={s.id} defaultValue= {s.id} selected = {s.id === student.schoolId ? true : false}>{s.name}</option>))}
         </select>
-        <button onClick = {destroyStudent}>Destroy</button>
+        <button onClick = {()=> destroyStudent(student.id) }>Destroy</button>
       </li> )
     }
     </ul>
@@ -25,10 +25,10 @@ const _students = ({schools, students, updateStudent, destroyStudent}) => {
 const mdp = (dispatch) => {
   return {
    updateStudent: (student)=> dispatch(updateStudent(student)),
-   destroyStudent: (id) => dispatch(destroyStudent(id))
+   destroyStudent: (student) => dispatch(destroyStudent(student))
 }}
 
-const Students = connect((state)=> state, mdp)(_students);
+const Students = connect((state)=> state, mdp)(_Students);
 
 
 export default Students;
