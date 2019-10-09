@@ -11,7 +11,7 @@ const _Students = ({schools, students, updateStudent, destroyStudent}) => {
       <li key = {student.id}>
         {student.firstName} {student.lastName} <p />
         GPA: {student.gpa}
-        <select name = 'schools' onChange = {updateStudent} value ={student.schoolID}>
+        <select name = 'schools' onChange = {(ev)=> updateStudent({id: student.id, schoolId: ev.target.value})} value ={student.schoolID}>
           <option defaultValue = "not enrolled"> --Not Enrolled--</option>
           {schools.map(s => (<option key={s.id} defaultValue= {s.id} selected = {s.id === student.schoolId ? true : false}>{s.name}</option>))}
         </select>

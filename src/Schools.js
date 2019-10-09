@@ -16,7 +16,7 @@ const _Schools = ({schools, students, updateStudent}) => {
       </Link>
         <img src = {school.imageURL} />
         Student count: {students.filter(stu => stu.schoolId === school.id).length}
-        <select name = 'student'onChange = {(ev)=> updateStudent(ev.target.id.value)} >
+        <select name = 'student'onChange = {(ev)=>updateStudent({id: student.id, schoolId: ev.target.value})} >
         <option defaultValue> --Add a Student--</option>
           {students.map(s => <option key={s.id} value= {s.id}>{s.firstName} {s.lastName}</option>)}
         </select>

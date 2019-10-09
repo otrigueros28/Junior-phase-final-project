@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStudent } from '../store';
 
-const _Create = ({schools, newstudent}) =>{
+const _Create = ({schools, createStudent}, props) =>{
   return (
-    <form id = 'createS' onSubmit = {newstudent}>
+    <form id = 'createS' onSubmit = {(ev)=>this.props.createStudent(ev.target.value)} >
       <label>
         First Name: <input type = "text" name = "firstName" required></input>
       </label>
@@ -31,12 +31,12 @@ const _Create = ({schools, newstudent}) =>{
 const mdp = (dispatch) =>{
   return{
     student: (ev) => {
-      const student = req.body;
+      const student = ev.target;
       ev.preventDefault();
       dispatch(createStudent(student));
     }
   }
 };
 
-const CreateStudent = connect((state) => state, mdp)(_Create)
+const CreateStudent = connect((state) => {return {students: state.students, schools: state.schools}}, mdp)(_Create)
 export default CreateStudent

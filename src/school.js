@@ -7,7 +7,7 @@ const _School = ({school, students, theirStudents, schools, destroyStudent, upda
   return (
   <div>
       <h3> { school[0].name } ({theirStudents.length} Students Enrolled)</h3>
-      <select name = 'student'onChange = {updateStudent} >
+      <select name = 'student' onChange = {(ev)=> updateStudent({ schoolId: ev.target.value})} >
         <option defaultValue> --Add a Student--</option>
           {students.map(s => <option key={s.id} value= {s.id}>{s.firstName} {s.lastName}</option>)}
         </select>
@@ -17,11 +17,11 @@ const _School = ({school, students, theirStudents, schools, destroyStudent, upda
               <li key = {student.id}>
               {student.firstName} {student.lastName} <p />
               GPA: {student.gpa}
-              <select name = 'schools' onChange = {updateStudent} value ={student.schoolID}>
+              <select name = 'schools' onChange = {()=> updateStudent(student)} value ={student.schoolID}>
                 <option defaultValue = "not enrolled"> --Not Enrolled--</option>
                 {schools.map(s => (<option key={s.id} defaultValue= {s.id} selected = {s.id === student.schoolId ? true : false}>{s.name}</option>))}
               </select>
-              <button onClick ={destroyStudent}>Destroy</button>
+              <button onClick ={()=> destroyStudent(student.id) }>Destroy</button>
             </li> )})}
           </ul>
           </div>
@@ -42,7 +42,7 @@ const msp = ({ schools, students }, { match }) => {
 const mdp = (dispatch) => {
   return {
     updateStudent: (student)=> dispatch(updateStudent(student)),
-    destroyStudent: (id) => dispatch(destroyStudent(id))
+    destroyStudent: (student) => dispatch(destroyStudent(student))
   }
 }
 
